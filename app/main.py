@@ -16,7 +16,7 @@ logger = logging.getLogger(__name__)
 
 app = FastAPI()
 security = HTTPBasic()
-tesla = Tesla(settings.tesla_account_email, authenticator=None)
+tesla = Tesla(settings.tesla_account_email, cache_file=settings.token_file_path, authenticator=None)
 
 # Store wheter a wakeup is currently running
 # Because we're only using a single worker it's save to store it in a variable
