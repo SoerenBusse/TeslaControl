@@ -1,0 +1,14 @@
+version: "3.9"
+services:
+  teslacontrol:
+    image: ghcr.io/soerenbusse/teslacontrol:master
+    ports:
+      - 8080:8080
+    volumes:
+      teslacontrol-vol:/config
+    environment:
+      - TESLA_ACCOUNT_EMAIL=mail@example.com
+      - TOKEN_FILE_PATH=/config/token.json
+      - VEHICLE_VIN=changeme
+      - API_USERNAME=user
+      - API_PASSWORD=changeme

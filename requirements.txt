@@ -2,7 +2,6 @@ async-timeout==4.0.2
 fastapi==0.89.1
 httptools==0.5.0
 pendulum==2.1.2
-pip-autoremove==0.10.0
 pip-chill==1.0.1
 python-dotenv==0.21.1
 pyyaml==6.0
