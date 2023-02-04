@@ -23,7 +23,7 @@ jobs:
         id: meta
         uses: crazy-max/ghaction-docker-meta@v2
         with:
-          images: ghcr.io/MarcusWichelmann/solaredge-exporter
+          images: ghcr.io/SoerenBusse/TeslaControl
           tags: |
             type=schedule
             type=ref,event=branch
