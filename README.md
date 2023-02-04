@@ -25,9 +25,6 @@ git clone https://github.com/SoerenBusse/TeslaControl /opt/teslacontrol
 python3 -m venv /opt/teslacontrol/venv
 /opt/teslacontrol/venv/bin/pip install -r requirements.txt
 
-# Generate Token
-/opt/teslacontrol/venv/bin/python3 /opt/teslacontrol/app/login.py --email mail@example.com --token-file-path /opt/teslacontrol/token.json
-
 # Create .env file and add environment variables (see environment variables from docker-compose)
 touch /opt/teslacontrol/.env
 
@@ -48,11 +45,17 @@ Type=simple
 User=teslacontrol
 Group=teslacontrol
 WorkDirectory=/opt/teslacontrol
-ExecStart=/opt/teslacontrol/venv/bin/python3 uvicorn app.main:app --host 0.0.0.0 --port 8080
+ExecStart=/opt/teslacontrol/venv/bin/uvicorn app.main:app --host 0.0.0.0 --port 8080
 
 [Install]
 WantedBy=multi-user.target
 --
+
+# Generate Token as user
+mkdir /srv/teslacontrol
+chown teslacontrol:teslacontrol /srv/teslacontrol
+chmod 700 /srv/teslacontrol
+runuser -u teslacontrol -- /opt/teslacontrol/venv/bin/python3 /opt/teslacontrol/app/login.py --email mail@example.com --token-file-path /srv/teslacontrol/token.json
 
 systemctl daemon-reload
 systemctl enable teslacontrol
