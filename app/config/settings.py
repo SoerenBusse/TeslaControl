@@ -6,6 +6,7 @@ class Settings(BaseSettings):
     vehicle_vin: str
     api_username: str
     api_password: str
+    token_file_path: str
 
 
 settings = Settings(_env_file=".env", _env_file_encoding="utf-8")
