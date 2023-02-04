@@ -14,3 +14,6 @@ docker run -it -v teslacontrol-vol:/config ghcr.io/soerenbusse/teslacontrol:mast
 ```
 
 Afterwards the container can be run via docker-compose.
+
+## API documentation
+The webservice automatically generates a Swagger documentation at `https://your-url:8080/docs`
